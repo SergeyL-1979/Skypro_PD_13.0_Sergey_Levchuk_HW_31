@@ -53,11 +53,12 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = [
-            "id", "last_login", "username", "password", "first_name",
-            "last_name", "email", "date_joined",
-            "role", "age", "groups", "user_permissions", "location"
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "id", "last_login", "username", "password", "first_name",
+        #     "last_name", "email", "date_joined",
+        #     "role", "age", "groups", "user_permissions", "location"
+        # ]
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):

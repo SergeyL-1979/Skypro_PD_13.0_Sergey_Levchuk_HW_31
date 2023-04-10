@@ -14,7 +14,7 @@ from rest_framework.generics import (
 from ads.models import Announcement
 from ads.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from ads.serializers import AnnouncementListSerializer, AnnouncementDetailSerializer, \
-    AnnouncementSerializer, AnnouncementCreateSerializer
+    AnnouncementCreateSerializer
 
 
 def root(request):
@@ -24,6 +24,7 @@ def root(request):
 # AnnouncementList ================= ГОТОВАЯ МОДЕЛЬ ОБЪЯВЛЕНИЯ ========================
 class AnnouncementPagination(PageNumberPagination):
     page_size = 5
+
 
 class AnnouncementListViewSet(ListAPIView):
     """ """
@@ -59,6 +60,7 @@ class AnnouncementListViewSet(ListAPIView):
 
         return super().get(request, *args, **kwargs)
 
+
 class AnnouncementDetailViewSet(RetrieveAPIView):
     """ """
     queryset = Announcement.objects.all()
@@ -72,17 +74,16 @@ class AnnouncementCreateViewSet(CreateAPIView):
     serializer_class = AnnouncementCreateSerializer
     permission_classes = [IsAuthenticated, ]
 
+
 class AnnouncementUpdateViewSet(UpdateAPIView):
     """ """
     queryset = Announcement.objects.all()
-    serializer_class = AnnouncementSerializer
+    serializer_class = AnnouncementListSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+
 
 class AnnouncementDeleteViewSet(DestroyAPIView):
     """ """
     queryset = Announcement.objects.all()
-    serializer_class = AnnouncementSerializer
+    serializer_class = AnnouncementListSerializer
     permission_classes = [IsAdminOrReadOnly, IsOwnerOrReadOnly | IsAdminOrReadOnly]
-
-
-

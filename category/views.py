@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
 
 from category.models import Category
 from category.serializers import CategoryListSerializer

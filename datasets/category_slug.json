@@ -2,31 +2,36 @@
     {
         "model": "category.category",
         "fields": {
-            "name": "Котики"
+            "name": "Котики",
+            "slug": "kotiki"
         }
     },
     {
         "model": "category.category",
         "fields": {
-            "name": "Песики"
+            "name": "Песики",
+            "slug": "pesiki"
         }
     },
     {
         "model": "category.category",
         "fields": {
-            "name": "Книги"
+            "name": "Книги",
+            "slug": "knigi"
         }
     },
     {
         "model": "category.category",
         "fields": {
-            "name": "Растения"
+            "name": "Растения",
+            "slug": "rastenie"
         }
     },
     {
         "model": "category.category",
         "fields": {
-            "name": "Мебель и интерьер"
+            "name": "Мебель и интерьер",
+            "slug": "mebel"
         }
     }
 ]

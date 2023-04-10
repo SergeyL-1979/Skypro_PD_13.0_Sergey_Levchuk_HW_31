@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -9,14 +10,14 @@ from users.models import User
 class Announcement(models.Model):
     """Модель Announcements(Объявления)"""
 
-    name = models.CharField(_("Наименование"), max_length=150)
+    name = models.CharField(_("Наименование"), max_length=150, validators=[MinLengthValidator(10)])
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, max_length=100, verbose_name="Автор"
     )
-    price = models.FloatField(_("Цена"))
-    description = models.TextField(_("Описание"))
+    price = models.IntegerField(_("Цена"), validators=[MinValueValidator(0)])
+    description = models.TextField(_("Описание"), null=True, blank=True)
     image = models.ImageField(_("Добавить фото"), upload_to="images", null=True)
-    is_published = models.BooleanField(_("is_published"), null=True)
+    is_published = models.BooleanField(_("is_published"), null=True, default=False)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name="Категория"
     )
